@@ -2,8 +2,10 @@
 'use strict';
 
 angular.module('myFirstApp', [])
-.controller('MyFirstController', function ($scope) {
-	$scope.name = "Mauri";
+.controller('MyFirstController', 
+			function ($scope) {
+
+	$scope.name = "";
 });
 
 })();
