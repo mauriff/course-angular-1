@@ -1,7 +1,10 @@
-<html>
+<html ng-app="myFirstApp">
 	<head>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+
 	</head>
-	<body>
-		Hola Curso Angular!!
+	<body ng-controller="MyFirstController">
+		Hola {{ name }}!
 	</body>
 </html>
