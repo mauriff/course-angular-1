@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('7minWorkout')
-.controller('WorkoutController' , ['$scope',  function ($scope){
+.controller('WorkoutController' , ['$scope', '$interval', function ($scope, $interval){
 
 	var ejercicios = [];
 	ejercicios.push({
@@ -21,18 +21,49 @@ angular.module('7minWorkout')
               duracion: 30
 	});
 
-	 $scope.ejercicioActual = ejercicios.shift();
+	ejercicios.push({
+
+		detalle: new Ejercicio({
+                  nombre: "Sentadillas",
+                  titulo: "Sentadillas",
+                  descripcion: "Bajar de espalda en manera recta flexionando levemente las rodillas..",
+                  imagen: "http://estaticos.marie-claire.es/media/cache/320x240_thumb/uploads/images/article/56153dfb65016da436ecbf72/100sentadillas-p.jpg",
+                  videos: ["//https://www.youtube.com/watch?v=BjixzWEw4EY", "//www.youtube.com/embed/BABOdJ-2Z6o", "//www.youtube.com/embed/c4DAnQ6DtF8"],
+                  procedimiento: "Bajar de espalda en manera recta flexionando levemente las rodillas.."
+              }),
+              duracion: 45
+	});
 
 
- function Ejercicio(args) {
-          this.nombre = args.nombre;
-          this.titulo = args.titulo;
-          this.descripcion = args.descripcion;
-          this.imagen = args.imagen;
-          this.related = {};
-          this.videos = args.videos;
-          this.sonido = args.sonido;
-          this.procedimiento = args.procedimiento;
-      }
+	 
+	 
+
+
+	function Ejercicio(args) {
+	  this.nombre = args.nombre;
+	  this.titulo = args.titulo;
+	  this.descripcion = args.descripcion;
+	  this.imagen = args.imagen;
+	  this.related = {};
+	  this.videos = args.videos;
+	  this.sonido = args.sonido;
+	  this.procedimiento = args.procedimiento;
+	}
+
+
+
+	var comenzarEjercicio = function (planEjercicios) {
+		$scope.ejercicioActual = planEjercicios;
+		$scope.duracionEjercicioActual = 0;
+		$interval(function(){
+			++$scope.duracionEjercicioActual;
+
+		},1000, $scope.ejercicioActual.duracion)
+		 .then(function () {
+            comenzarEjercicio(ejercicios.shift());
+          });
+	}
+	comenzarEjercicio(ejercicios.shift());
+
 
 }]);
