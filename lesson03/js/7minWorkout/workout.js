@@ -10,7 +10,7 @@ angular.module('7minWorkout')
                   nombre: "jumpingJacks",
                   titulo: "Jumping Jacks",
                   descripcion: "A jumping jack or star jump, also called side-straddle hop is a physical jumping exercise.",
-                  imagen: "img/JumpingJacks.png",
+                  imagen: "http://www.sparkpeople.com/assets/exercises/Side-High-Knee-March-with-Swinging-Arms.gif",
                   videos: ["//www.youtube.com/embed/dmYwZH_BNd0", "//www.youtube.com/embed/BABOdJ-2Z6o", "//www.youtube.com/embed/c4DAnQ6DtF8"],
                   procedimiento: "Assume an erect position, with feet together and arms at your side.\
                             Slightly bend your knees, and propel yourself a few inches into the air.\
@@ -51,17 +51,19 @@ angular.module('7minWorkout')
 	}
 
 
-
+   $scope.$watch('duracionEjercicioActual', function(arg1){
+   			if (arg1 == $scope.ejercicioActual.duracion){
+   				comenzarEjercicio(ejercicios.shift());
+   			}
+   })
 	var comenzarEjercicio = function (planEjercicios) {
 		$scope.ejercicioActual = planEjercicios;
 		$scope.duracionEjercicioActual = 0;
 		$interval(function(){
 			++$scope.duracionEjercicioActual;
 
-		},1000, $scope.ejercicioActual.duracion)
-		 .then(function () {
-            comenzarEjercicio(ejercicios.shift());
-          });
+		},1000, $scope.ejercicioActual.duracion);
+		
 	}
 	comenzarEjercicio(ejercicios.shift());
 
