@@ -6,7 +6,7 @@
 	
 
 </head>
-<body ng-controller="WorkoutController">
+<body>
 
 <div class="navbar navbar-default navbar-fixed-top top-navbar">
         <div class="container app-container">
@@ -17,23 +17,11 @@
   </div>
 
     <div class="container body-content app-container">
-      <div class="row">
-          <div id="exercise-pane" class="col-sm-8 col-sm-offset-2">
-            <div class="workout-display-div">
-            <h1>{{ejercicioActual.detalle.titulo}}</h1>
-            <img class="img-responsive" ng-src="{{ejercicioActual.detalle.imagen}}" />
-                
-                <div class="progress time-progress">
-                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"aria-valuemax="{{ejercicioActual.duracion}}" ng-style="{'width':(duracionEjercicioActual/ejercicioActual.duracion ) * 100 + '%'}">
-                            </div>
-                </div>
-
-             <h1>Tiempo restante: {{ ejercicioActual.duracion - duracionEjercicioActual }}</h1>
-            </div>
-          </div>
-      </div>
+        <div ng-view></div>
     </div>
+    
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/7minWorkout/workout.js"></script>
 </body>
