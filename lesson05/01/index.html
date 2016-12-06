@@ -15,7 +15,9 @@
   <body ng-app="app" >
   <div>
     <div ng-controller="climaController">
-     <h2>Temperatura = {{clima.temperatura }}</h2>
+    <input type="text" ng-model="clima.ciudad" placeholder="Cordoba" />
+    <button ng-click="getClima()"  >Ver Clima</button><br>
+      {{clima.temperatura }}
      <img ng-src="{{clima.image}}">
 
     </div>
