@@ -9,9 +9,15 @@
  */
 angular.module('myWebApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    
+  })
+  .directive('climaWidget', climaWidget);
+ 
+function climaWidget() {
+	
+   var ddo = {
+    templateUrl: 'views/clima-widget.html'
+  };
+
+  return ddo;
+}

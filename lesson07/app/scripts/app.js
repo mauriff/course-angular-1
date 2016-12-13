@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/clima', {
+        templateUrl: 'views/clima.html',
+        controller: 'ClimaCtrl',
+        controllerAs: 'clima'
+      })
       .otherwise({
         redirectTo: '/'
       });
