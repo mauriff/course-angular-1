@@ -8,7 +8,7 @@ Date: December 2012
 
 Topics
 -------
-** AngularJS fundamentale
+** AngularJS fundamentale \n
 ** Dependency Injection
 ** Interpolation & Expression
 ** Directives
